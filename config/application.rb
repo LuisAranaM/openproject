@@ -182,7 +182,7 @@ module OpenProject
     config.action_controller.asset_host = OpenProject::Configuration::AssetHost.value
 
     # Return false instead of self when enqueuing is aborted from a callback.
-    Rails.application.config.active_job.return_false_on_aborted_enqueue = true
+    # Rails.application.config.active_job.return_false_on_aborted_enqueue = true
 
     config.log_level = OpenProject::Configuration['log_level'].to_sym
 
