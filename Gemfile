@@ -56,7 +56,7 @@ gem 'friendly_id', git: 'https://github.com/norman/friendly_id', ref: '67422c04e
 gem 'acts_as_list', '~> 0.9.9'
 gem 'acts_as_tree', '~> 2.8.0'
 # Replace once release supports rails 6
-gem 'awesome_nested_set', git: 'https://github.com/collectiveidea/awesome_nested_set', ref: '7831531b10435c0387c702dc9fea7ba39629108a'
+gem 'awesome_nested_set', git: 'https://github.com/collectiveidea/awesome_nested_set', ref: '94075850a669761c1c9bc14d621bd0877512b6f7'
 gem 'rubytree', git: 'https://github.com/dr0verride/RubyTree.git', ref: '06f53ee'
 gem 'typed_dag', '~> 2.0.2'
 
