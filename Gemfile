@@ -34,8 +34,8 @@ gem 'actionpack-xml_parser', '~> 2.0.0'
 gem 'activemodel-serializers-xml', '~> 1.0.1'
 gem 'activerecord-import', '~> 0.28.1'
 gem 'activerecord-session_store', '~> 1.1.0'
-gem 'rails', git: 'https://github.com/rails/rails', ref: '6-0-stable'
-gem 'responders', '~> 2.4'
+gem 'rails', '~> 6.0.0'
+gem 'responders', '~> 3.0'
 
 gem 'rdoc', '>= 2.4.2'
 
@@ -107,9 +107,7 @@ gem 'multi_json', '~> 1.13.1'
 gem 'oj', '~> 3.7.0'
 
 gem 'daemons'
-gem 'delayed_job_active_record',
-    git: 'https://github.com/collectiveidea/delayed_job_active_record',
-    branch: "rails-6-compatibility"
+gem 'delayed_job_active_record', '~> 4.1.4'
 
 gem 'rack-protection', '~> 2.0.0'
 
@@ -204,7 +202,7 @@ group :test do
   gem 'test-prof', '~> 0.7.3'
 
   gem 'cucumber', '~> 3.1.0'
-  gem 'cucumber-rails', '~> 1.6.0', require: false
+  gem 'cucumber-rails', '~> 1.8.0', require: false
   gem 'database_cleaner', '~> 1.6'
   gem 'rack_session_access'
   gem 'rspec', '~> 3.8.0'
