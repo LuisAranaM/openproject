@@ -182,7 +182,7 @@ class Project < ActiveRecord::Base
     where(["#{Project.table_name}.id IN (SELECT em.project_id FROM #{EnabledModule.table_name} em WHERE em.name=?)", mod.to_s])
   }
   scope :public_projects, -> { where(is_public: true) }
-  scope :visible, ->(user = User.current) { Project.visible_by(user) }
+  scope :visible, ->(user = User.current) { merge(Project.visible_by(user)) }
   scope :newest, -> { order(created_on: :desc) }
 
   def visible?(user = User.current)
