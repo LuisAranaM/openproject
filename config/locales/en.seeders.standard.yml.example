@@ -29,6 +29,12 @@ en:
   seeders:
     standard:
       demo_data:
+        default_description_for_types:
+          - type: :default_type_bug
+            description: |
+              ### Steps to reproduce
+
+              ### Actual behavior
         groups:
           - name: 'Project Admins'
             projects:
