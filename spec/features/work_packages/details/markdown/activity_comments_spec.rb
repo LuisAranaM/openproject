@@ -42,14 +42,14 @@ describe 'activity comments', js: true do
           comment_field.click_and_type_slowly 'this is a comment'
           comment_field.submit_by_enter
 
-          expect(page).to_not have_selector('.user-comment .message', text: 'this is a comment')
+          wp_page.expect_comment 'this is a comment'
         end
 
         it 'submits with click' do
           comment_field.click_and_type_slowly 'this is a comment!1'
           comment_field.submit_by_click
 
-          expect(page).to have_selector('.user-comment .message', text: 'this is a comment!1')
+          wp_page.expect_comment 'this is a comment !1'
         end
 
         it 'submits comments repeatedly' do
@@ -57,8 +57,7 @@ describe 'activity comments', js: true do
           comment_field.submit_by_click
 
           expect(page).to have_selector('.user-comment > .message', count: 2)
-          expect(page).to have_selector('.user-comment > .message',
-                                        text: 'this is my first comment!1')
+          wp_page.expect_comment 'this is my first comment!1'
 
           expect(comment_field.editing?).to be false
           comment_field.activate!
@@ -68,8 +67,7 @@ describe 'activity comments', js: true do
           comment_field.submit_by_click
 
           expect(page).to have_selector('.user-comment > .message', count: 3)
-          expect(page).to have_selector('.user-comment > .message',
-                                        text: 'this is my second comment!1')
+          wp_page.expect_comment 'this is my second comment!1'
         end
       end
 
@@ -82,13 +80,13 @@ describe 'activity comments', js: true do
           comment_field.cancel_by_escape
           expect(comment_field.editing?).to be true
 
-          expect(page).to_not have_selector('.user-comment .message', text: 'this is a comment')
+          wp_page.expect_comment 'this is a comment'
 
           # Click should cancel the editing
           comment_field.cancel_by_click
           expect(comment_field.editing?).to be false
 
-          expect(page).to_not have_selector('.user-comment .message', text: 'this is a comment')
+          wp_page.expect_comment 'this is a comment'
         end
       end
 
@@ -116,8 +114,8 @@ describe 'activity comments', js: true do
           end
           comment_field.submit_by_click
 
+          wp_page.expect_comment 'Comment with bold text'
           expect(page).to have_selector('.user-comment .message strong', text: 'bold text')
-          expect(page).to have_selector('.user-comment .message', text: 'Comment with bold text')
 
           # Hover the new activity
           activity = page.find('#activity-2')
@@ -139,8 +137,8 @@ describe 'activity comments', js: true do
           end
 
           edit.submit_by_click
-          expect(page).to have_selector('.user-comment .message strong', text: 'bold text')
-          expect(page).to have_selector('.user-comment .message em', text: 'italic text')
+          wp_page.expect_comment 'Comment with italic text'
+          expect(page).to have_selector('.user-comment .message em', text: 'italic text', wait: 10)
         end
       end
     end
@@ -177,9 +175,10 @@ describe 'activity comments', js: true do
         # Scroll to the activity
         scroll_to_element(page.find('#activity-2'))
 
-        expect(page).to have_selector('.user-comment > .message', count: 2)
-        expect(page).to have_selector('.user-comment > .message blockquote')
-        expect(page).to have_selector('.user-comment > .message strong')
+        wp_page.expect_comment 'This is a bold remark'
+        expect(page).to have_selector('.user-comment .message', count: 2)
+        expect(page).to have_selector('.user-comment .message blockquote')
+        expect(page).to have_selector('.user-comment .message strong')
       end
     end
   end
